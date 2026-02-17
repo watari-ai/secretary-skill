@@ -1,0 +1,24 @@
+# Secretary Skill Configuration
+# Copy this to config.yml and fill in your values.
+
+email:
+  account: ""              # himalaya account name
+  master_address: ""       # your human's email address
+  agent_address: ""        # agent's email address (if any)
+  check_interval_hours: 4  # how often to check email
+
+calendar:
+  calendar_id: ""          # gcalcli calendar ID (blank = default)
+  reminder_minutes: 5      # minutes before meeting to remind
+
+notifications:
+  channel: ""              # Slack/Discord channel for notifications
+  morning_report_time: "08:00"
+  evening_report_time: "23:00"
+  timezone: "Asia/Tokyo"
+
+briefing:
+  include_weather: true
+  weather_city: "Tokyo"
+  include_github: false
+  github_repos: []         # e.g. ["owner/repo1", "owner/repo2"]
