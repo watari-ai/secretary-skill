@@ -24,7 +24,7 @@ Both tools must be installed and authenticated before use.
 
 1. **Clone this skill** into your agent's skills directory:
    ```bash
-   git clone https://github.com/zyom45/secretary-skill.git skills/secretary
+   git clone https://github.com/watari-ai/secretary-skill.git skills/secretary
    ```
 
 2. **Copy and configure** the config file:
@@ -81,4 +81,4 @@ MIT
 
 ## Contributing
 
-Issues and PRs welcome at [zyom45/secretary-skill](https://github.com/zyom45/secretary-skill).
+Issues and PRs welcome at [watari-ai/secretary-skill](https://github.com/watari-ai/secretary-skill).
