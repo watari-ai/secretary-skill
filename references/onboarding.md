@@ -156,6 +156,20 @@ Use this interactive flow to create the secretary skill config:
     > Should I include GitHub activity? (default: no)
     > Which repos? (e.g., owner/repo1, owner/repo2)
 
+13. **Calendar reminder timing**
+    > 何分前にミーティングのリマインドが欲しいですか？（デフォルト: 5分前）
+
+14. **Break reminder schedule**
+    > 休憩の声掛けはどのタイミングが良いですか？
+    > - 時刻リストで指定（デフォルト: 12:00, 15:00, 18:00）
+    > - または間隔で指定（例: 3時間ごと）
+
+15. **Night mode start time**
+    > 何時以降を深夜モードにしますか？深夜モードでは「そろそろ休みませんか？」と声掛けします。（デフォルト: 0:00）
+
+16. **Long work threshold**
+    > 連続作業何時間で休憩を促しますか？（デフォルト: 2時間）
+
 ### After Completion
 
 Save the answers as `config.yml` in the skill directory, then verify:

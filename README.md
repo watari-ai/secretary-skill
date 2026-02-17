@@ -1,84 +1,57 @@
 # Secretary Skill
 
-An AI agent skill for performing secretary duties: email triage, daily briefings, calendar management, and proactive reminders.
-
-Built for [OpenClaw](https://github.com/openclaw/openclaw) agents.
+AI agent skill for secretary duties — email triage, daily briefings, calendar management, meeting reminders, and health/life support.
 
 ## Features
 
-- 📧 **Email Digest** — Check unread emails, filter by importance, send summaries
-- ☀️ **Morning Briefing** — Daily schedule, weather, and action items
-- 🌙 **Evening Briefing** — Day review and tomorrow preview
-- ⏰ **Meeting Reminders** — Proactive notifications before calendar events
+- **📧 Email Digest** — Periodic unread email check, filtering, prioritization, and summary
+- **🌅 Morning Briefing** — Daily overview: calendar, weather, GitHub activity
+- **🌙 Evening Briefing** — Day review + tomorrow's preview
+- **⏰ Meeting Reminders** — Automatic pre-meeting notifications (configurable minutes before)
+- **💚 Health & Life Support**
+  - Break reminders at configurable times
+  - Shopping list management
+  - Long work session detection
+  - Late night mode (gentle sleep nudges)
 
 ## Prerequisites
 
-| Tool | Purpose | Installation |
-|------|---------|-------------|
-| [himalaya](https://github.com/pimalaya/himalaya) | CLI email client (IMAP/SMTP) | `brew install himalaya` |
-| [gcalcli](https://github.com/insanum/gcalcli) | Google Calendar CLI | `pip install gcalcli` |
+- **[himalaya](https://github.com/pimalaya/himalaya)** — CLI email client (installed & authenticated)
+- **[gcalcli](https://github.com/insanum/gcalcli)** — Google Calendar CLI (installed & authenticated)
 
-Both tools must be installed and authenticated before use.
+## Setup
 
-## Quick Start
-
-1. **Clone this skill** into your agent's skills directory:
+1. Copy `config.example.yml` → `config.yml`
+2. Fill in your values (email account, notification channel, timing preferences)
+3. Verify tools work:
    ```bash
-   git clone https://github.com/watari-ai/secretary-skill.git skills/secretary
-   ```
-
-2. **Copy and configure** the config file:
-   ```bash
-   cp config.example.yml config.yml
-   # Edit config.yml with your values
-   ```
-
-3. **Verify tools are working**:
-   ```bash
-   himalaya list --account <your-account>
+   himalaya list --account <your-account> --folder INBOX
    gcalcli agenda
    ```
-
-4. **You're ready.** The skill provides procedures for email digests, briefings, and reminders.
+4. Run onboarding: see `references/onboarding.md`
 
 ## Configuration
 
-See `config.example.yml` for all available options:
+See `config.example.yml` for all options. Key settings:
 
-| Section | Purpose |
-|---------|---------|
-| `email` | himalaya account, addresses, check interval |
-| `calendar` | gcalcli calendar ID, reminder timing |
-| `notifications` | Channel, report times, timezone |
-| `briefing` | Optional weather/GitHub integration |
+| Key | Description | Default |
+|-----|-------------|---------|
+| `email.check_interval_hours` | Email check frequency | `4` |
+| `calendar.reminder_minutes` | Minutes before meeting to remind | `5` |
+| `notifications.morning_report_time` | Morning briefing time | `"08:00"` |
+| `notifications.evening_report_time` | Evening briefing time | `"23:00"` |
+| `health.break_reminder_times` | Break reminder schedule | `["12:00","15:00","18:00"]` |
+| `health.night_mode_start` | Late night mode trigger | `"00:00"` |
+| `health.long_work_threshold_hours` | Continuous work alert threshold | `2` |
 
-## Skill Structure
+## Templates
 
-```
-secretary/
-├── SKILL.md              # Full skill instructions
-├── config.example.yml    # Configuration template
-├── references/
-│   └── onboarding.md     # First-time setup guide
-└── templates/
-    ├── email-digest.md   # Email notification format
-    ├── morning-brief.md  # Morning briefing format
-    └── evening-brief.md  # Evening briefing format
-```
-
-## Usage with OpenClaw
-
-This skill is auto-discovered when placed in your agent's skills directory. The agent will read `SKILL.md` when handling secretary-related tasks.
-
-For scheduled briefings, set up cron jobs:
-- Morning briefing at configured time
-- Email digest every N hours
-- Meeting reminders based on calendar
+- `templates/email-digest.md` — Email digest format
+- `templates/morning-brief.md` — Morning briefing format
+- `templates/evening-brief.md` — Evening briefing format
+- `templates/meeting-reminder.md` — Meeting reminder format
+- `templates/break-reminder.md` — Break reminder format
 
 ## License
 
 MIT
-
-## Contributing
-
-Issues and PRs welcome at [watari-ai/secretary-skill](https://github.com/watari-ai/secretary-skill).

@@ -22,3 +22,9 @@ briefing:
   weather_city: "Tokyo"
   include_github: false
   github_repos: []         # e.g. ["owner/repo1", "owner/repo2"]
+
+health:
+  break_reminder_times: ["12:00", "15:00", "18:00"]
+  shopping_list_path: "data/shopping-list.txt"
+  night_mode_start: "00:00"        # suggest sleep after this time
+  long_work_threshold_hours: 2     # nudge after N hours continuous work
